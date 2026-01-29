@@ -1,0 +1,14 @@
+n = int(input())
+words = []
+count = {}
+
+for _ in range(n):
+    w = input()
+    if w not in count:
+        count[w] = 1
+        words.append(w)
+    else:
+        count[w] += 1
+
+print(len(words))
+print(' '.join(str(count[w]) for w in words))
