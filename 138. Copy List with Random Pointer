@@ -1,0 +1,35 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, x: int, next: 'Node' = None, random: 'Node' = None):
+        self.val = int(x)
+        self.next = next
+        self.random = random
+"""
+
+class Solution:
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        temp = head
+        if head == None:
+            return None
+# adding the copies between the nodes of original LL
+        while temp:
+            next_node = temp.next
+            temp.next = Node(temp.val, next_node, None)
+            temp = next_node
+        temp = head
+# copying all the random pointers to our copies
+        while temp:
+            random = temp.random
+            temp = temp.next
+            if random == None:
+                temp.random = None
+            else:
+                temp.random = random.next
+            temp = temp.next
+        temp = head.next
+# changing the pointer orientation
+        while temp.next:
+            temp.next = temp.next.next
+            temp = temp.next
+        return head.next
