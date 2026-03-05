@@ -1,0 +1,9 @@
+class Solution:
+    def getGoodIndices(self, variables: List[List[int]], target: int) -> List[int]:
+        r=[]
+        for i in range(len(variables)):
+            a=variables[i]
+            b=pow(pow(a[0],a[1],10),a[2],a[3])
+            if b==target:
+                r.append(i)
+        return r
